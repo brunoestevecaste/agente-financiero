@@ -60,12 +60,105 @@ NEGATIVE_TERMS = [
 
 
 st.set_page_config(page_title="Agente Financiero AI", page_icon="📈", layout="centered")
-st.title("Financial Insight Agent")
-st.write("Analiza precio de la última semana y noticias del último mes.")
+st.markdown(
+    """
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap');
+
+    :root {
+        --primary: #04332a;
+        --bg: #fcfdfc;
+        --line: rgba(4, 51, 42, 0.22);
+    }
+
+    html, body, [class*="css"] {
+        font-family: "Manrope", sans-serif;
+    }
+
+    [data-testid="stAppViewContainer"] {
+        background:
+            radial-gradient(circle at 10% 0%, rgba(4, 51, 42, 0.08), transparent 40%),
+            radial-gradient(circle at 95% 100%, rgba(4, 51, 42, 0.06), transparent 35%),
+            var(--bg);
+        color: var(--primary);
+    }
+
+    [data-testid="stHeader"] {
+        background: transparent;
+    }
+
+    .main .block-container {
+        max-width: 860px;
+        padding-top: 1.7rem;
+        padding-bottom: 1.2rem;
+    }
+
+    .hero-card {
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 1rem 1.1rem;
+        background: rgba(252, 253, 252, 0.9);
+        margin-bottom: 0.9rem;
+    }
+
+    .hero-title {
+        margin: 0;
+        color: var(--primary);
+        font-size: 1.35rem;
+        font-weight: 700;
+        letter-spacing: 0.01em;
+    }
+
+    .hero-subtitle {
+        margin: 0.35rem 0 0 0;
+        color: var(--primary);
+        opacity: 0.8;
+        font-size: 0.97rem;
+    }
+
+    [data-testid="stSidebar"] {
+        background: var(--primary);
+    }
+
+    [data-testid="stSidebar"] * {
+        color: var(--bg);
+    }
+
+    [data-testid="stSidebar"] input {
+        background: rgba(252, 253, 252, 0.12) !important;
+        color: var(--bg) !important;
+        border: 1px solid rgba(252, 253, 252, 0.35) !important;
+    }
+
+    [data-testid="stChatInputTextArea"] textarea {
+        background: var(--bg) !important;
+        color: var(--primary) !important;
+        border: 1px solid var(--line) !important;
+        border-radius: 10px !important;
+    }
+
+    [data-testid="stChatMessageContent"] {
+        color: var(--primary);
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
+st.markdown(
+    """
+    <div class="hero-card">
+      <p class="hero-title">Financial Insight Agent</p>
+      <p class="hero-subtitle">Analiza precio semanal y noticias del último mes con enfoque claro y minimalista.</p>
+    </div>
+    """,
+    unsafe_allow_html=True,
+)
 
 with st.sidebar:
     st.header("Configuración")
     api_key = st.text_input("Google API Key", type="password")
+    st.caption("La clave solo se usa en esta sesión.")
     if not api_key:
         st.warning("Introduce tu Google API Key para continuar.")
         st.stop()
