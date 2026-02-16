@@ -5,7 +5,11 @@ from datetime import datetime, timedelta, timezone
 from typing import Any, Dict, List, Optional, Tuple
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.tools import tool
-from langchain.agents import create_tool_calling_agent, AgentExecutor
+try:
+    from langchain.agents import create_tool_calling_agent, AgentExecutor
+except ImportError:
+    from langchain.agents.agent import AgentExecutor
+    from langchain.agents.tool_calling_agent.base import create_tool_calling_agent
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.messages import AIMessage, HumanMessage
 
